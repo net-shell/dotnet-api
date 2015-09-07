@@ -1,0 +1,5 @@
+C:\Users\boyanb\Documents\GitHub\dotnet-api\API\obj\Debug\API.csprojResolveAssemblyReference.cache
+C:\Users\boyanb\Documents\GitHub\dotnet-api\API\bin\Debug\API.dll
+C:\Users\boyanb\Documents\GitHub\dotnet-api\API\bin\Debug\API.pdb
+C:\Users\boyanb\Documents\GitHub\dotnet-api\API\obj\Debug\API.dll
+C:\Users\boyanb\Documents\GitHub\dotnet-api\API\obj\Debug\API.pdb

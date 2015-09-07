@@ -1,0 +1,7 @@
+C:\Users\boyanb\Documents\GitHub\dotnet-api\Microweber.Application\bin\Debug\Microweber.Application.exe
+C:\Users\boyanb\Documents\GitHub\dotnet-api\Microweber.Application\bin\Debug\Microweber.Application.pdb
+C:\Users\boyanb\Documents\GitHub\dotnet-api\Microweber.Application\bin\Debug\API.dll
+C:\Users\boyanb\Documents\GitHub\dotnet-api\Microweber.Application\obj\x86\Debug\Microweber.Application.csprojResolveAssemblyReference.cache
+C:\Users\boyanb\Documents\GitHub\dotnet-api\Microweber.Application\obj\x86\Debug\Microweber.Application.exe
+C:\Users\boyanb\Documents\GitHub\dotnet-api\Microweber.Application\obj\x86\Debug\Microweber.Application.pdb
+C:\Users\boyanb\Documents\GitHub\dotnet-api\Microweber.Application\bin\Debug\API.pdb
