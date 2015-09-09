@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.Net;
 using System.Text;
-using Newtonsoft.Json;
 using System.Linq;
 
 namespace Microweber.API
@@ -37,38 +36,40 @@ namespace Microweber.API
 
         public string MakeRequest(string url, string method = "GET", string postData = null)
 		{
-            Uri uri = makeApiUri(url);
-            Console.WriteLine(uri.ToString());
-            WebRequest request = WebRequest.Create(uri);
-
-            if (method != "GET")
+            try
             {
-                request.Method = method;
+                Uri uri = makeApiUri(url);
+                WebRequest request = WebRequest.Create(uri);
 
-                if (postData.Length > 0)
+                if (method != "GET")
                 {
-                    byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+                    request.Method = method;
 
-                    request.ContentType = "application/x-www-form-urlencoded";
-                    request.ContentLength = byteArray.Length;
-
-                    using (Stream dataStream = request.GetRequestStream())
+                    if (postData.Length > 0)
                     {
-                        dataStream.Write(byteArray, 0, byteArray.Length);
+                        byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+
+                        request.ContentType = "application/x-www-form-urlencoded";
+                        request.ContentLength = byteArray.Length;
+
+                        using (Stream dataStream = request.GetRequestStream())
+                        {
+                            dataStream.Write(byteArray, 0, byteArray.Length);
+                        }
+                    }
+                }
+
+                using (WebResponse response = request.GetResponse())
+                {
+                    Console.WriteLine(String.Format(" > {0}\t{1} {2}", uri.ToString(), (int)((HttpWebResponse)response).StatusCode, ((HttpWebResponse)response).StatusDescription));
+                    Stream dataStream = response.GetResponseStream();
+                    using (StreamReader reader = new StreamReader(dataStream))
+                    {
+                        return reader.ReadToEnd();
                     }
                 }
             }
-
-            using (WebResponse response = request.GetResponse())
-            {
-                Console.WriteLine(((HttpWebResponse)response).StatusDescription);
-                Stream dataStream = response.GetResponseStream();
-                using (StreamReader reader = new StreamReader(dataStream))
-                {
-                    string responseFromServer = reader.ReadToEnd();
-                    object deserialize = JsonConvert.DeserializeObject(responseFromServer);
-                }
-            }
+            catch { }
 
             return null;
 		}

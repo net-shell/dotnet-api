@@ -1,13 +1,15 @@
-using System;
 using Microweber.API.Models;
+using Newtonsoft.Json;
 
 namespace Microweber.API
 {
-	public class Client
+    public class Client
 	{
 		public Server Server { get; set; }
 
         public HTTP HTTP { get; set; }
+
+        public Auth Auth { get; set; }
 
         private static Client instance;
 
@@ -23,15 +25,17 @@ namespace Microweber.API
             }
         }
 
-        public bool Call(string method)
+        public object Call(string method)
         {
-            return this.HTTP.MakeRequest(method);
+            string response = this.HTTP.MakeRequest(method);
+            return JsonConvert.DeserializeObject(response);
         }
 
 		public Client()
 		{
 			this.Server = new Server();
             this.HTTP = new HTTP();
+            this.Auth = new Auth();
 		}
 	}
 }
