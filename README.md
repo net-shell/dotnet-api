@@ -11,7 +11,7 @@ Simply add a reference to the assembly. The example code is pretty self-explanat
 ```
 using System;
 
-namespace Microweber.Application
+namespace MyApplication
 {
 	class MainClass
 	{
@@ -20,7 +20,7 @@ namespace Microweber.Application
             Microweber.API.Client api = Microweber.API.Client.Instance;
             api.Auth.Credentials = new Microweber.API.Models.Credentials("username", "password");
             api.Server.Host = "http://your-site.microweber.com";
-			      api.Call("is_logged");
+            api.Call("is_logged");
 		}
 	}
 }
